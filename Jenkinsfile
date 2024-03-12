@@ -10,6 +10,7 @@ pipeline {
       steps {
         git 'https://github.com/umairshah124/docker_jen.git'
 
+	      
       }
     }
     stage('Building image') {

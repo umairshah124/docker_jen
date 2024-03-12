@@ -22,8 +22,8 @@ pipeline {
     stage('Push docker image'){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'umairshah379', variable: 'dockervariable')]) {
-                        sh 'docker login -u umairshah379 -p ${dockervariable}'
+                    withCredentials([string(credentialsId: 'umairshah379', variable: 'doc_variable')]) {
+                       sh 'docker login -u umairshah379 -p ${doc_variable}'
                         sh 'docker push umairshah379/mydockerrepo:0.0.Realease'			}
 		}
 	}	

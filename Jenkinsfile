@@ -24,6 +24,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'umairshah379', variable: 'doc_variable')]) {
                        sh 'docker login -u umairshah379 -p ${doc_variable}'
                         sh 'docker push umairshah379/mydockerrepo:1.0.Realease'			}
+			
 		}
 	}	
 	}

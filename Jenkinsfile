@@ -14,6 +14,7 @@ pipeline {
       }
     }
     stage('Building image') {
+	    
       steps{
         script {
                     sh 'docker build -t umairshah379/mydockerrepo:1.0.Realease .'        }

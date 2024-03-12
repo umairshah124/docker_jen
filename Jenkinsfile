@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "umairshah379/mydockerrepo"
-    registryCredential = 'umairshah379'
+    credentialsId = 'umairshah379'
     dockerImage = ''
   }
   agent any
@@ -19,13 +19,12 @@ pipeline {
         }
       }
     }
-    stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
-			}
+    stage('Push docker image'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'umairshah379', variable: 'dockervariable')]) {
+                        sh 'docker login -u umairshah379 -p ${dockervariable}'
+                        sh 'docker push umairshah379/mydockerrepo:0.0.Realease'			}
 		}
 	}	
 	}
